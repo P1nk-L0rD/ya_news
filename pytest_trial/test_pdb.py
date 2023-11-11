@@ -1,4 +1,3 @@
-import pdb
 import pytest
 
 
@@ -6,6 +5,7 @@ def transform_list(x):
     x.append(1)
     x.extend([2, 3])
     return x
+
 
 @pytest.mark.skip
 def test_list():

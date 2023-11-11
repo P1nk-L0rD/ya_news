@@ -21,7 +21,7 @@ class TestRoutes(TestCase):
             news=cls.news,
             author=cls.author,
             text='Текст комментария'
-        ) 
+        )
 
     def test_pages_availability(self):
         urls = (
@@ -44,8 +44,8 @@ class TestRoutes(TestCase):
         )
         for user, status in users_statuses:
             self.client.force_login(user)
-            for name in ('news:edit', 'news:delete'):  
-                with self.subTest(user=user, name=name):        
+            for name in ('news:edit', 'news:delete'):
+                with self.subTest(user=user, name=name):
                     url = reverse(name, args=(self.comment.id,))
                     response = self.client.get(url)
                     self.assertEqual(response.status_code, status)
@@ -56,12 +56,8 @@ class TestRoutes(TestCase):
         # В цикле перебираем имена страниц, с которых ожидаем редирект:
         for name in ('news:edit', 'news:delete'):
             with self.subTest(name=name):
-                # Получаем адрес страницы редактирования или удаления комментария:
+                # Получаем адрес страницы редактирования или удаления
                 url = reverse(name, args=(self.comment.id,))
-                # Получаем ожидаемый адрес страницы логина, 
-                # на который будет перенаправлен пользователь.
-                # Учитываем, что в адресе будет параметр next, в котором передаётся
-                # адрес страницы, с которой пользователь был переадресован.
                 redirect_url = f'{login_url}?next={url}'
                 response = self.client.get(url)
                 # Проверяем, что редирект приведёт именно на указанную ссылку.

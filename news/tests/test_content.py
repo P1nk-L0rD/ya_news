@@ -28,7 +28,7 @@ class TestHomePage(TestCase):
             )
             for index in range(settings.NEWS_COUNT_ON_HOME_PAGE + 1)
         ]
-        News.objects.bulk_create(all_news) 
+        News.objects.bulk_create(all_news)
 
     def test_news_count(self):
         # Загружаем главную страницу.
@@ -97,4 +97,3 @@ class TestDetailPage(TestCase):
         self.client.force_login(self.author)
         response = self.client.get(self.detail_url)
         self.assertIn('form', response.context)
-    

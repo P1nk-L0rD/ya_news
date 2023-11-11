@@ -1,4 +1,4 @@
-import pytest 
+import pytest
 
 
 def one_more(x):
@@ -9,7 +9,7 @@ def one_more(x):
     'input_arg, expected_result',  # Названия аргументов, передаваемых в тест.
     [(4, 5), (3, 5)]  # Список кортежей со значениями аргументов.
 )
-def test_one_more(input_arg, expected_result):  # Те же параметры, что и в декораторе.
+def test_one_more(input_arg, expected_result):
     assert one_more(input_arg) == expected_result
 
 
